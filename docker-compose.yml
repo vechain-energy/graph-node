@@ -19,7 +19,7 @@ services:
     ports:
       - "8545:8545"
     environment:
-      - NODE=http://thor-node:8669
+      - NODE_URL=http://thor-node:8669
     depends_on:
       - thor-node
   graph-node:

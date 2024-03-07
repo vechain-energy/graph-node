@@ -9,7 +9,7 @@ services:
     ports:
       - "8545:8545"
     environment:
-      - NODE=https://mainnetc2.vechain.network
+      - NODE_URL=https://mainnetc2.vechain.network
   graph-node:
     platform: linux/amd64
     image: graphprotocol/graph-node
