@@ -6,6 +6,12 @@ By default, it will initiate a Thor node and set up an RPC proxy in front of it.
 docker compose up
 ```
 
+To run the setup with a remote node:
+
+```sh
+docker compose -f docker-compose-simple.yml up 
+```
+
 This will start IPFS, Postgres, Vechain Thor-Node with RPC and Graph Node in Docker and create persistent
 data directories for IPFS, Postgres and Node in `./data/ipfs`, `./data/postgres`, `./data/thor`.
 
