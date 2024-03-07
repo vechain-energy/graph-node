@@ -1,4 +1,4 @@
-This Docker Compose setup is designed to run a [Graph Node](https://github.com/graphprotocol/graph-node/tree/master/docker) alongside a Vechain node.
+This Docker Compose setup is designed to run a [Graph Node](https://github.com/graphprotocol/graph-node/tree/master/docker) using a VeChain node as a data source.
 
 By default, it will initiate a Thor node and set up an RPC proxy in front of it.
 
