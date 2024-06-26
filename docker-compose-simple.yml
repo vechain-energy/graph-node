@@ -1,15 +1,12 @@
-version: '3'
 services:
   rpc-proxy:
-    image: node:20
+    image: ifavo/vet-rpc:latest
+    platform: linux/amd64
     container_name: rpc-proxy
-    build:
-        context: .
-        dockerfile: Dockerfile
     ports:
       - "8545:8545"
     environment:
-      - NODE_URL=https://mainnetc2.vechain.network
+      - NODE_URL=https://mainnet.vechain.org
   graph-node:
     platform: linux/amd64
     image: graphprotocol/graph-node
