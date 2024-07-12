@@ -31,7 +31,18 @@ You can access these via:
   - RPC: `http://localhost:8545`
 
 Once this is up and running, you can use [`graph-cli`](https://github.com/graphprotocol/graph-tooling/tree/main/packages/cli) to create and deploy your subgraph to the running Graph Node.
-  
+
+If you want to setup your own Postgres, ensure that's locale is correctly set, like this:
+
+```sql
+CREATE DATABASE "graph-node" TEMPLATE template0 LOCALE 'C' ENCODING 'UTF-8';
+```
+
+If you want to use graphman, a configuration is prepared to allow direct access:
+
+```shell
+docker exec -t graph-node-graph-node-1 graphman --config /configs/config.toml info --all
+```
 
 ## Example Subgraph Deployment for vet.domains
 

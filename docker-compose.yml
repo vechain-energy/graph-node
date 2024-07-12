@@ -40,6 +40,8 @@ services:
       ipfs: "ipfs:5001"
       ethereum: "mainnet:http://rpc-proxy:8545"
       GRAPH_LOG: info
+    volumes:
+      - ./configs:/configs
   ipfs:
     platform: linux/amd64
     image: ipfs/kubo:v0.17.0

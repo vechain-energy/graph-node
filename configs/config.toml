@@ -1,0 +1,15 @@
+[store]
+[store.primary]
+connection = "postgresql://graph-node:let-me-in@postgres/graph-node"
+pool_size = 10
+
+[chains]
+ingestor = "block_ingestor_node"
+[chains.mainnet]
+shard = "primary"
+provider = [ { label = "ethereum", url = "http://localhost:8545", features = [] } ]
+
+[deployment]
+[[deployment.rule]]
+shards = [ "primary" ]
+indexers = [ "index_node_vip_0", "index_node_vip_1" ]

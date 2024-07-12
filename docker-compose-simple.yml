@@ -7,6 +7,16 @@ services:
       - "8545:8545"
     environment:
       - NODE_URL=https://mainnet.vechain.org
+      - CACHE_STORAGE=redis://rpc-cache
+    depends_on:
+      - rpc-cache
+  rpc-cache:
+     image: redis:latest
+     restart: always
+     volumes:
+        - ./data/redis:/data
+     ports:
+       - "6379:6379"
   graph-node:
     platform: linux/amd64
     image: graphprotocol/graph-node:v0.35.1
@@ -28,6 +38,11 @@ services:
       ipfs: 'ipfs:5001'
       ethereum: 'mainnet:http://rpc-proxy:8545'
       GRAPH_LOG: info
+      ETHEREUM_POLLING_INTERVAL: 1000
+      # lower the block range size if your getLogs request match too many blocks
+      GRAPH_ETHEREUM_MAX_BLOCK_RANGE_SIZE: 100
+    volumes:
+      - ./configs:/configs
   ipfs:
     platform: linux/amd64
     image: ipfs/kubo:v0.17.0
