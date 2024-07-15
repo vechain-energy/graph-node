@@ -45,7 +45,7 @@ services:
       - ./configs:/configs
   ipfs:
     platform: linux/amd64
-    image: ipfs/kubo:v0.17.0
+    image: ipfs/kubo:v0.29.0
     ports:
       - '5001:5001'
     volumes:
