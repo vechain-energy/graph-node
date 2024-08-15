@@ -6,16 +6,16 @@ services:
     ports:
       - "8545:8545"
     environment:
-      - NODE_URL=https://mainnet.vechain.org
+      - NODE_URL=https://node.vechain.energy
   graph-node:
     platform: linux/amd64
     image: graphprotocol/graph-node:v0.35.1
     ports:
-      - '8000:8000'
-      - '8001:8001'
-      - '8020:8020'
-      - '8030:8030'
-      - '8040:8040'
+      - "8000:8000"
+      - "8001:8001"
+      - "8020:8020"
+      - "8030:8030"
+      - "8040:8040"
     depends_on:
       - ipfs
       - postgres
@@ -25,31 +25,31 @@ services:
       postgres_user: graph-node
       postgres_pass: let-me-in
       postgres_db: graph-node
-      ipfs: 'ipfs:5001'
-      ethereum: 'mainnet:http://rpc-proxy:8545'
+      ipfs: "ipfs:5001"
+      ethereum: "mainnet:http://rpc-proxy:8545"
       GRAPH_LOG: info
       ETHEREUM_POLLING_INTERVAL: 1000
       # lower the block range size if your getLogs request match too many blocks
-      GRAPH_ETHEREUM_MAX_BLOCK_RANGE_SIZE: 100
+      GRAPH_ETHEREUM_MAX_BLOCK_RANGE_SIZE: 1000
     volumes:
       - ./configs:/configs
   ipfs:
     platform: linux/amd64
     image: ipfs/kubo:v0.29.0
     ports:
-      - '5001:5001'
+      - "5001:5001"
     volumes:
       - ./data/ipfs:/data/ipfs
   postgres:
     image: postgres:14
     ports:
-      - '5432:5432'
+      - "5432:5432"
     command:
       [
         "postgres",
         "-cshared_preload_libraries=pg_stat_statements",
         "-cmax_wal_size=2GB",
-        "-cmax_connections=200"
+        "-cmax_connections=200",
       ]
     environment:
       POSTGRES_USER: graph-node
