@@ -2,7 +2,7 @@ services:
   thor-node:
     image: vechain/thor
     container_name: thor-node
-    command: --network main --api-addr 0.0.0.0:8669 --disable-pruner
+    command: --network main --api-addr 0.0.0.0:8669 --disable-pruner --api-logs-limit=18446744073709551615
     volumes:
       - ./data/thor:/home/thor
     ports:
@@ -57,6 +57,7 @@ services:
       [
         "postgres",
         "-cshared_preload_libraries=pg_stat_statements",
+        "-cmax_wal_size=2GB",
         "-cmax_connections=200",
       ]
     environment:
